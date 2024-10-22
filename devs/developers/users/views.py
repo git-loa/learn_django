@@ -13,3 +13,9 @@ def user_profile(request, pk):
     
     context = {}
     return render(request, 'users/user-profile.html', context)
+
+def userLogin(request):
+    
+    context ={}
+    return render(request, 'users/login-register.html', context)
+    

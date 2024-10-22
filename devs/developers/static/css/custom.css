@@ -115,3 +115,57 @@
 .search-bar{
     max-width: 700px;
 }
+
+
+
+/* Floating label */
+.float{
+    position:relative
+}
+
+.float label{
+    position:absolute;
+    font-size: 1rem;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    padding: 0 0.3rem;
+    margin: 0 0.5rem;
+    transition: 0.1s ease-out;
+    transform-origin: left top;
+    pointer-events: none;
+}
+
+.float>input{
+    font-size: 1rem;
+    outline: none;
+    border: 1px solid rgb(230, 228, 228);
+    border-radius: 5px;
+    padding: 1rem 0.7rem;
+    color: rgb(247, 247, 247);
+    transition: 0.1s ease-out;
+}
+
+.float input:focus{
+    border-color: #bdbcbe;
+}
+
+.float input:focus+label {
+    color: #413b49;
+    top: 0;
+    transform: translateY(-50%) scale(0.9) !important;
+}
+
+.float input:not(:placeholder-shown)+label {
+    top: 0;
+    transform: translateY(-50%) scale(0.9) !important;
+}
+
+.float input:not(:focus)::placeholder {
+    opacity: 0;
+    color: #c8c7c9;
+}
+
+
+  

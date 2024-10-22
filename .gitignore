@@ -15,7 +15,8 @@ media
 .history
 
 #Folders to ignore
-
+static/
+staticfiles/
 
 
 # Virtual Environment
