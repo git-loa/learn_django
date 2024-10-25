@@ -1,3 +1,7 @@
+body{
+    padding-top: 70px;
+}
+
 .flip-card {
     perspective: 1000px;
     width: 300px;
@@ -143,7 +147,7 @@
     border: 1px solid rgb(230, 228, 228);
     border-radius: 5px;
     padding: 1rem 0.7rem;
-    color: rgb(247, 247, 247);
+    color: rgb(45, 44, 44);
     transition: 0.1s ease-out;
 }
 
@@ -164,8 +168,32 @@
 
 .float input:not(:focus)::placeholder {
     opacity: 0;
-    color: #c8c7c9;
+    color: #323232;
+}
+
+/* Settings */
+.profile-settings{
+    list-style-type: none;
+    text-align: right;
+    margin: 4px 0px 0px 0px;
+    padding: 0;
+  }
+  
+.profile-settings li {
+    display: inline-block;
+    font-size: 1.1rem;
+    padding: 3px;
+}
+
+.profile-settings li > a{
+    text-decoration: none;
 }
 
 
-  
+.reg-user, .log-user{
+    padding-top: calc(12.5%);
+}
+
+.reg-img{
+    background: linear-gradient(45deg, #1f2b2c 0%, #cfe4e4 100%);
+}
