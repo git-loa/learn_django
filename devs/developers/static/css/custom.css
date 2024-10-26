@@ -197,3 +197,20 @@ body{
 .reg-img{
     background: linear-gradient(45deg, #1f2b2c 0%, #cfe4e4 100%);
 }
+
+
+
+
+
+.user-login-reg {
+    position: relative;
+    margin-top: 350px;
+}
+.container-login-reg{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 800px;
+    max-height: 900px;
+}

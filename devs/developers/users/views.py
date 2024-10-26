@@ -5,11 +5,16 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import cache_control
 from django.contrib.auth.models import User
+from . utils import searchProfiles
 
 def profiles(request):
-    
+    #profiles = Profile.objects.all()
+    profiles, search_query = searchProfiles(request)
 
-    context = {}
+    context = {
+        'search_query':search_query, 
+        'profiles':profiles,
+    }
     return render(request, 'users/profiles.html', context)
 
 def user_profile(request, pk):
