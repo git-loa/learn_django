@@ -5,15 +5,19 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import cache_control
 from django.contrib.auth.models import User
-from . utils import searchProfiles
+from .utils import searchProfiles
+from extras import paginateObject
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 def profiles(request):
-    #profiles = Profile.objects.all()
     profiles, search_query = searchProfiles(request)
-
-    context = {
+    
+    custom_range, profiles = paginateObject(request, profiles)
+    
+    context={
         'search_query':search_query, 
         'profiles':profiles,
+        'custom_range':custom_range
     }
     return render(request, 'users/profiles.html', context)
 

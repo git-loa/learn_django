@@ -40,6 +40,10 @@
             {% endfor %}
             
         </div>
+        <hr>
       </div>
+      
+      {% include "pagination.html" with queryset=profiles custom_range=custom_range %}
+      
 </main>
 {% endblock content %}
