@@ -2,7 +2,10 @@
 {% block content %}
 <main class="profiles">
     <div class = "container-fluid mb-4 bg-light">
-        <h1 class="text-center p-5">Our Latest Products</h1>
+        <h1 class="text-center p-5">Developers</h1> 
+        {% if request.user.is_authenticated %}
+            <strong>Welcome back {{request.user.profile.first_name}}</strong>
+        {% endif %}
         <div class="container search-bar p-6">
             <form action="" class="d-flex pb-5" method="GET">
                 <input class="form-control me-sm-2" type="search" name="search_query"  value="{{search_query}}" placeholder="Search Profiles"/>
@@ -26,7 +29,15 @@
                             </p>
                         </div>
                         <div class="flip-card-back">
-                            <h3>About Me</h3>
+                            <h3>About 
+                                <a href="{% url 'user-profile' profile.userid %}">
+                                <small>
+                                    <strong>
+                                        {{profile.first_name}} {{profile.last_name}}
+                                    </strong>
+                                </small>
+                            </a>
+                            </h3>
                             <p>{{profile.bio|slice:"150"}}</p>
                             <div class="social-icons mt-4">
                                 <a href="#"><i class="fa fa-twitter"></i></a>

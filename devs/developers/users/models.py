@@ -18,11 +18,11 @@ class Profile(models.Model):
     social_linkedIn = models.CharField(max_length=200, blank=True, null=True)
     social_youtude = models.CharField(max_length=200, blank=True, null=True)
     social_website = models.CharField(max_length=200, blank=True, null=True)
-    created = models.DateTimeField(auto_now_add=True)
+    created_date = models.DateTimeField(auto_now_add=True)
     
     
     def __str__(self) -> str:
         return str(self.username)
     
     class Meta:
-        ordering = ['-created']
+        ordering = ['-created_date']

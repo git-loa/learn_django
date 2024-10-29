@@ -8,6 +8,8 @@ from django.contrib.auth.models import User
 from .utils import searchProfiles
 from extras import paginateObject
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from .forms import ProfileForm
+
 
 def profiles(request):
     profiles, search_query = searchProfiles(request)
@@ -22,9 +24,9 @@ def profiles(request):
     return render(request, 'users/profiles.html', context)
 
 def user_profile(request, pk):
+    profile = Profile.objects.get(userid=pk)
     
-    
-    context = {}
+    context = {'profile':profile}
     return render(request, 'users/user-profile.html', context)
 
 
@@ -91,3 +93,29 @@ def userLogin(request):
 def userLogout(request):
     logout(request)
     return redirect('user-login')   
+
+@login_required(login_url="user-login")
+def userAccount(request):
+    profile = request.user.profile
+    
+    context = {'profile':profile}
+    return render(request, 'users/user-account.html', context)
+
+
+@login_required(login_url='user-login')
+def updateProfile(request):
+    profile = request.user.profile
+    form = ProfileForm(instance=profile)
+    
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profiles')
+    
+    context = {
+        'form':form,
+    }
+    return render(request, 'users/update_profile.html', context)
+    
+    

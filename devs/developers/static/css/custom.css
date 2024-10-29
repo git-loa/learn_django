@@ -214,3 +214,16 @@ body{
     max-width: 800px;
     max-height: 900px;
 }
+
+
+.hide-checkbox{
+    display: none;
+}
+
+.show-settings{
+    display: none;
+}
+
+.show-settings.dp{
+    display: block;
+}

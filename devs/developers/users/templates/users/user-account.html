@@ -7,9 +7,9 @@
         <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
           <div class="card profile-card">
             <div class="card-body text-center">
-                <img src="{{profile.profile_image.url}}" alt="User Profile" class="rounded-circle profile-img mb-3">
+                <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="User Profile" class="rounded-circle profile-img mb-3">
                 <h3 class="card-title mb-2">{{profile.first_name}} {{profile.last_name}}</h3>
-                <p class="card-text text-muted mb-3">{{profile.short_intro}}</p>
+                <p class="card-text text-muted mb-3">Web Developer</p>
                 <p class="card-text mb-4">Passionate about creating beautiful and functional websites. Always learning and
                     exploring new technologies.</p>
                 <div class="social-icons mb-4">
@@ -26,7 +26,15 @@
             <div class="ps-lg-1-6 ps-xl-5">
                 <div class="mb-5 wow fadeIn">
                     <div class="text-start mb-1-6 wow fadeIn">
-                      <h2 class="h1 mb-0 text-primary">#About Me</h2>
+                        <div class="row">
+                          <div class="col-9"><h2 class="h1 mb-0 text-primary">#About Me</h2> </div>
+
+                          <div class="col-3">
+                            <input type="checkbox" id="toggleSettings" class="hide-checkbox"/>
+                            <label for="toggleSettings"><i class="fa fa-gear fa-spin fa-lg" aria-hidden="true" style="font-size:36px;"></i> Settings</label>
+                          </div>
+
+                        </div>
                     </div>
                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
                     <p class="mb-0">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
@@ -39,9 +47,19 @@
 
                       <div class="card">
                         <div class="card-header">
-                          <a class="btn" data-bs-toggle="collapse" href="#collapseOne">
-                            Collapsible Group Item #1
-                          </a>             
+                          <div class="row">
+                              <div class="col-9">
+                                <a class="btn" data-bs-toggle="collapse" href="#collapseOne">
+                                  Collapsible Group Item #1
+                                </a>
+                              </div>
+                              <div class="settings col-3">
+                                <ul class="profile-settings show-settings">
+                                  <li><a href="{% url 'update-profile' %}">Edit</a></li>
+                                  <li><a href="#about">Delete</a></li>    
+                                </ul>                            
+                              </div>
+                          </div>                
                         </div>
                         <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
                           <div class="card-body">
@@ -86,9 +104,19 @@
 
                       <div class="card">
                         <div class="card-header">
-                          <a class="btn" data-bs-toggle="collapse" href="#collapseOne">
-                            Collapsible Group Item #1
-                          </a>               
+                          <div class="row">
+                              <div class="col-9">
+                                <a class="btn" data-bs-toggle="collapse" href="#collapseOne">
+                                  Collapsible Group Item #1
+                                </a>
+                              </div>
+                              <div class="settings col-3">
+                                <ul class="profile-settings show-settings">
+                                  <li><a href="#home">Edit</a></li>
+                                  <li><a href="#about">Delete</a></li>    
+                                </ul>                            
+                              </div>
+                          </div>                
                         </div>
                         <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
                           <div class="card-body">

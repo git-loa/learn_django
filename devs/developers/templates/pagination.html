@@ -1,4 +1,4 @@
-<div class="container mt-1">
+<div class="container  mt-1">
     <ul class="pagination justify-content-center" style="margin:20px 0">
     {% if queryset.has_previous %}
      <li class="page-item"><a class="page-link" href="?page= {{queryset.previous_page_number}} ">&#10094;Prev</a></li>
@@ -8,7 +8,7 @@
       {% if page == queryset.number %}
       <li class="page-item active"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
       {% else %}
-      <li class="page-item"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+      <li class="page-item bg-primary"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
       {% endif %}
       
     {% endfor %}
