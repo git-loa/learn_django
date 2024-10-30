@@ -118,4 +118,8 @@ def updateProfile(request):
     }
     return render(request, 'users/update_profile.html', context)
     
+
+def userMsgs(request):
     
+    context ={}
+    return render(request, 'users/messages.html', context)

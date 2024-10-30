@@ -199,9 +199,6 @@ body{
 }
 
 
-
-
-
 .user-login-reg {
     position: relative;
     margin-top: 350px;
@@ -215,7 +212,6 @@ body{
     max-height: 900px;
 }
 
-
 .hide-checkbox{
     display: none;
 }
@@ -227,3 +223,19 @@ body{
 .show-settings.dp{
     display: block;
 }
+
+.navbar-nav > li{
+    margin-left:30px;
+    margin-right:30px;
+}
+
+.remain{
+    height: 90vh;
+}
+
+
+
+
+
+
+

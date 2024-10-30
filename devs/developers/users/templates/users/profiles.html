@@ -7,7 +7,7 @@
             <strong>Welcome back {{request.user.profile.first_name}}</strong>
         {% endif %}
         <div class="container search-bar p-6">
-            <form action="" class="d-flex pb-5" method="GET">
+            <form action="" class="d-flex pb-5" method="GET" id = "searchForm">
                 <input class="form-control me-sm-2" type="search" name="search_query"  value="{{search_query}}" placeholder="Search Profiles"/>
                 <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
             </form>
