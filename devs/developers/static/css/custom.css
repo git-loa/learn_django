@@ -115,6 +115,9 @@ body{
     text-align: right;
 }
 
+.nav-item-left, .btn-inbox{
+    text-align: left;
+}
 
 .search-bar{
     max-width: 700px;
@@ -234,8 +237,27 @@ body{
 }
 
 
+.nav-sidebar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+  
+.nav-sidebar li {
+    display: inline-block;
+    font-size: 20px;
+    padding: 20px;
+}
 
 
+.btn-right{
+    float: right;
+}
 
+.person{
+    display: none;
+}
 
-
+.toggle-person{
+    cursor: pointer;
+}

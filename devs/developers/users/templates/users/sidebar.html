@@ -1,0 +1,57 @@
+<div class="card">        
+  <div class="card-header d-grid">
+    <button type="button" class="btn btn-lg" data-bs-toggle="modal" data-bs-target="#myModal"> New Message
+      <i class="fa fa-pencil ms-3" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>
+<div id="accordion">
+    <div class="card border-0">
+      <div class="card-header d-grid">
+        <a class="btn btn-lg bg-light" data-bs-toggle="collapse" href="#collapseOne">
+          <i class="fa fa-inbox me-4"></i>Inbox (3)<i class="fa fa-caret-down ms-4"></i>
+        </a>
+      </div>
+      <div id="collapseOne" class="collapse" data-bs-parent="#accordion">
+        <div class="card-body ">
+
+          <a href="#"  class="btn toggle-person border-bottom" data-bs-target="#Borge" data-bs-dismiss="offcanvas">
+            <div class="">
+              <img class="w3-round w3-margin-right" src="/w3images/avatar3.png" style="width:15%;"><span class="w3-opacity w3-large">Borge Refsnes</span>
+              <h6>Subject: Remember Me</h6>
+              <p>Hello, i just wanted to let you know that i'll be home at...</p>
+            </div>
+          </a>
+
+          <a href="#" class="btn toggle-person border-bottom" data-bs-target="#Jane" data-bs-dismiss="offcanvas">
+            <div class="p-4">
+              <img class="w3-round w3-margin-right" src="/w3images/avatar5.png" style="width:15%;"><span class="w3-opacity w3-large">Jane Doe</span>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+            </div>
+          </a>
+
+          <a href="#" class="btn toggle-person border-bottom" data-bs-target="#John" data-bs-dismiss="offcanvas">
+            <div class="p-4">
+              <img class="w3-round w3-margin-right" src="/w3images/avatar5.png" style="width:15%;"><span class="w3-opacity w3-large">John Doe</span>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </div>
+</div> 
+
+<div class="othersSideMenu">
+  <ul class="nav flex-column">
+    <li class="nav-item-left">
+      <a class="nav-link btn btn-lag" href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i> Sent</a>
+    </li>
+    <li class="nav-item-left">
+      <a class="nav-link btn btn-lg" href="#"><i class="fa fa-hourglass-end" aria-hidden="true"></i> Drafts</a>
+    </li>
+    <li class="nav-item-left">
+      <a class="nav-link btn btn-lg" href="#"><i class="fa fa-trash" aria-hidden="true"></i> Trash</a>
+    </li>
+  </ul>
+</div>
