@@ -9,33 +9,20 @@
     <div class="card border-0">
       <div class="card-header d-grid">
         <a class="btn btn-lg bg-light" data-bs-toggle="collapse" href="#collapseOne">
-          <i class="fa fa-inbox me-4"></i>Inbox (3)<i class="fa fa-caret-down ms-4"></i>
+          <i class="fa fa-inbox me-4"></i><h3>Inbox (<span id="unread-count">{{ unreadCount }}</span>)</h3><i class="fa fa-caret-down ms-4"></i>
         </a>
       </div>
       <div id="collapseOne" class="collapse" data-bs-parent="#accordion">
-        <div class="card-body ">
-
-          <a href="#"  class="btn toggle-person border-bottom" data-bs-target="#Borge" data-bs-dismiss="offcanvas">
-            <div class="">
-              <img class="w3-round w3-margin-right" src="/w3images/avatar3.png" style="width:15%;"><span class="w3-opacity w3-large">Borge Refsnes</span>
-              <h6>Subject: Remember Me</h6>
-              <p>Hello, i just wanted to let you know that i'll be home at...</p>
-            </div>
-          </a>
-
-          <a href="#" class="btn toggle-person border-bottom" data-bs-target="#Jane" data-bs-dismiss="offcanvas">
-            <div class="p-4">
-              <img class="w3-round w3-margin-right" src="/w3images/avatar5.png" style="width:15%;"><span class="w3-opacity w3-large">Jane Doe</span>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-            </div>
-          </a>
-
-          <a href="#" class="btn toggle-person border-bottom" data-bs-target="#John" data-bs-dismiss="offcanvas">
-            <div class="p-4">
-              <img class="w3-round w3-margin-right" src="/w3images/avatar5.png" style="width:15%;"><span class="w3-opacity w3-large">John Doe</span>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-            </div>
-          </a>
+        <div class="card-body justify-content-center">
+          {% for msg in msgsRecipient %}         
+          <div class="btn mini-msg" data-id="{{msg.id}}">
+            <img class="w3-round w3-margin-right" src="/w3images/avatar3.png" style="width:15%;"><span class="w3-opacity w3-large">Borge Refsnes</span>
+            <h6>Subject: {{msg.subject}}</h6>
+            <p>{{msg.body|slice:'30'}}...</p>
+          </div>
+          <br/>
+          <hr>
+          {% endfor %}
 
         </div>
       </div>

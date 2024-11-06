@@ -18,14 +18,14 @@ class Profile(models.Model):
     social_linkedIn = models.CharField(max_length=200, blank=True, null=True)
     social_youtude = models.CharField(max_length=200, blank=True, null=True)
     social_website = models.CharField(max_length=200, blank=True, null=True)
-    created_date = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)
     
     
     def __str__(self) -> str:
         return str(self.username)
     
     class Meta:
-        ordering = ['-created_date']
+        ordering = ['-created']
 
 class Skill(models.Model):
     owner = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=True)
@@ -39,8 +39,8 @@ class Skill(models.Model):
 
 
 class Message(models.Model):
-    sender = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True, blank=True, related_name="senderMsg")
-    recipient = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True, blank=True, related_name="recipientMsg")
+    sender = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True, blank=True, related_name="sent_emails")
+    recipient = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True, blank=True, related_name="received_emails")
     name = models.CharField(max_length=200, null= True, blank=True)
     email = models.EmailField(max_length=200, null= True, blank=True)
     subject = models.CharField(max_length=200, null= True, blank=True)
@@ -54,8 +54,5 @@ class Message(models.Model):
     
     class Meta:
         ordering = ['is_read', '-created']
-
-
-
 
 

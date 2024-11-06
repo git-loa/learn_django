@@ -9,5 +9,9 @@ urlpatterns = [
     path('user-logout/', views.userLogout, name='user-logout'),
     path('update-profile/', views.updateProfile, name='update-profile'),
     path('user-account/', views.userAccount, name='user-account'),
-    path('msgs/', views.userMsgs, name='msgs')
+    path('msgs/', views.userMsgs, name='msgs'),
+    path('read-msg/', views.read_msg, name='read-msg'),
+    path('msg-details/', views.getMsgDetails, name='msg-details'),
+    
+    
 ]

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Profile
+from .models import Profile, Message
 from .forms import RegistrationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
@@ -9,6 +9,9 @@ from .utils import searchProfiles
 from extras import paginateObject
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .forms import ProfileForm
+from django.views.decorators.http import require_POST, require_GET
+from django.http import JsonResponse
+
 
 
 def profiles(request):
@@ -118,8 +121,71 @@ def updateProfile(request):
     }
     return render(request, 'users/update_profile.html', context)
     
-
+@login_required(login_url='user-login')
 def userMsgs(request):
-    
-    context ={}
+    profile = request.user.profile
+    msgsRecipient = Message.objects.filter(recipient=profile)
+    unreadCount = msgsRecipient.filter(is_read=False).count()
+    context ={'msgsRecipient':msgsRecipient, 'unreadCount':unreadCount}
     return render(request, 'users/messages.html', context)
+
+
+@login_required(login_url='user-login')
+@require_POST
+def read_msg(request):
+    import json
+    profile = request.user.profile
+    data = json.loads(request.body)
+    msgid = data.get('msgid')
+    #print(f'This, {msgid}, should not be empty.')
+    print(f'Parsed data {data}, Type: {type(data)}')
+    if msgid:
+        try:
+            msg = Message.objects.get(id=msgid)
+            msg.is_read = True
+            msg.save()
+            unreadCount = Message.objects.filter(recipient=profile, is_read=False).count()
+            print(f'Returning response with unreadCount {unreadCount}')
+            return JsonResponse({
+                'status':'success',
+                'unreadCount' : unreadCount
+            })
+        except Message.DoesNotExist:
+            return JsonResponse({
+                'status':'error',
+                'message':'Message not found'
+            }) 
+    return JsonResponse({
+                'status':'error',
+                'message':'Invalid request'
+            })
+          
+          
+@require_GET
+def getMsgDetails(request):
+    #import json
+    #data = json.loads(request.body)
+    #msgid = data.get('msgid')
+    msgid = request.GET.get('msgid')
+    if msgid:
+        try:
+            msg = Message.objects.get(id=msgid)
+            return JsonResponse({
+                'subject': msg.subject,
+                'sender': msg.sender.email,
+                'body': msg.body,
+                'created' : msg.created.strftime('%Y-%m-%d %H:%M:%S')
+            })
+        except Message.DoesNotExist:
+            return JsonResponse({
+                'status':'error',
+                'message':'Message not found'
+            }) 
+    return JsonResponse({
+                'status':'error',
+                'message':'Invalid request'
+            })
+    
+    
+            
+            
