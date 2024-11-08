@@ -173,8 +173,10 @@ def getMsgDetails(request):
             return JsonResponse({
                 'subject': msg.subject,
                 'sender': msg.sender.email,
+                'name':msg.sender.first_name +' '+ msg.sender.last_name,
                 'body': msg.body,
-                'created' : msg.created.strftime('%Y-%m-%d %H:%M:%S')
+                'created' : msg.created.strftime('%Y-%m-%d, %H:%M:%S'),
+                'picture' : msg.sender.profile_image.url
             })
         except Message.DoesNotExist:
             return JsonResponse({

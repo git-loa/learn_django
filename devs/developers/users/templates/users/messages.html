@@ -3,15 +3,20 @@
 {% block content %}
 {% load humanize %}
 <div class="container-fluid mt-1">
+  
   <div class="row remain">
-    <div class="col-lg-3 d-none d-lg-block shadow-lg p-2">
+    <div class="col-lg-3 d-none d-lg-block shadow-lg p-2" style="width-max:100px;">
       {% include "users/sidebar.html" %}
     </div>
     <div class="col-lg-9 border">
+      <div class="w-100" style="text-align:center;">
+        <h5>Messages</h5>
+      </div>
       {% include "users/off_canvas.html" %}
       {% include "users/modal_msg.html" %}
       <div class="row d-lg-none d-block"> 
 
+        
         <ul class="nav-sidebar">
           <li class="btn-left"><a class="btn btn-lg shadow-lg" data-bs-toggle="offcanvas" href="#sideBarOffcanvas"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> </a></li>
           <li class="btn-right"><a class="btn btn-lg  shadow-lg" data-bs-toggle="modal" href="#myModal"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a></li>
@@ -34,11 +39,11 @@
       -->
 
       <div class="w3-container person p-3">
-        <div id="msg-content" class="msg-content">
+        <div id="msg-content" class="msg-content ">
           <br>
-          <img class="rounded ps4 pe-4 " src="" style="width:20%;">
+          <img id="pic-content" class="rounded ps-5 pe-5" src="" style="width:20%;">
           <h5 class="mt-2">Subject: <span id="msg-subject"></span> </h5>
-          <h4 class="mb-2"><i class="fa fa-clock-o"></i> From Borge Refsnes, Sep 27, 2015.</h4>
+          <h4 class="mb-2"><i class="fa fa-clock-o"></i> <span id="msg-sender-created"> From Borge Refsnes, Sep 27, 2015. </span></h4>
           <a class="btn ms-1 shadow-lg"  href="#">Reply<i class=" ms-2 fa fa-mail-reply"></i></a>
           <a class="btn ms-4 shadow-lg" href="#">Forward<i class="ms-2 fa fa-arrow-right"></i></a>
           <hr>
