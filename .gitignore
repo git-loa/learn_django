@@ -20,7 +20,7 @@ staticfiles/
 
 
 # Virtual Environment
-
+.venv/
 
 # Other files
 .DS_Store
