@@ -266,3 +266,23 @@ body{
 .card-header-text{
     text-align: left;
 }
+
+
+
+select:required:invalid {
+    color: #747070;
+}
+option[value=""][disabled] {
+    display: none;
+}
+option {
+    color: #000;
+}
+
+
+
+
+
+
+
+

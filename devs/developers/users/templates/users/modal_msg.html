@@ -1,24 +1,77 @@
 
  <!-- The Modal -->
+ {% load widget_tweaks %}
 <div class="modal" id="myModal">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
   
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Modal Heading</h4>
+          <h4 class="modal-title">Message</h4>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
   
-        <!-- Modal body -->
-        <div class="modal-body">
-          Modal body..
-        </div>
+       <form action="#" method="POST">
+        {% csrf_token %}
+         <!-- Modal body -->
+          <div class="modal-body p-5">
+            {% comment %} <div class="mb-4">
+              <select name="recipient" class="form-select" id="id_recipient" required>
+                <option value="" disabled selected>Select a recipient</option>
+                {% for user in form.recipient.field.queryset %}
+                <option value="{{user.id}}">{{user.username}}</option>
+                {% endfor %}
+              </select>
+            </div>  {% endcomment %} 
+            {% if request.user.is_authenticated == False %}
+            <div class="float mb-5">
+              {% render_field form.name class="form-control" placeholder="Enter you name" name="name"%}
+              <label for="id_{{form.name.label|cut:' '}}">Name</label>
+              <!-- Rendering field errors -->
+              {% for error in form.name.errors %}
+              <span class="text-danger">{{error}}</span>
+              {% endfor %}
+            </div>
+
+            <div class="float mb-5">
+              {% render_field form.email class="form-control" placeholder="Enter your email" name="from_email"%}
+              <label for="id_{{form.email.label|cut:' '}}">Email</label>
+              <!-- Rendering field errors -->
+              {% for error in form.email.errors %}
+              <span class="text-danger">{{error}}</span>
+              {% endfor %}
+            </div>
+            {% endif %}
+            
+            
+            
+            <div class="float mb-5">
+              {% render_field form.subject class="form-control" placeholder=form.text.label name="subject"%}
+              <label for="id_{{form.subject.label|cut:' '}}">{{form.subject.label}}</label>
+              <!-- Rendering field errors -->
+              {% for error in form.subject.errors %}
+              <span class="text-danger">{{error}}</span>
+              {% endfor %}
+            </div>
+            <div class="float mb-2">
+              {% render_field form.body class="form-control" name="body" %}
+              <label for="id_{{form.body.label | cut:' '}}"></label>
+              <!-- Rendering field errors -->
+            </div>                               
+          </div>
   
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          <div class="row w-100">
+            <div class="col-3 form-group">                    
+              <button type="button" class="btn btn-danger p-2" data-bs-dismiss="modal">Cancel</button>                
+            </div> 
+            <div class="col-9 form-group ">                    
+              <button type="submit" class="btn float-end btn-dark p-2" for="form-group-input"> Send <i class="fa fa-paper-plane"></i></button>                
+            </div> 
+          </div>          
         </div>
+       </form>
   
       </div>
     </div>

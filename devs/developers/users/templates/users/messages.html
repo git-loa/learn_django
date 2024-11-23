@@ -1,58 +1,74 @@
- {% extends "base.html" %}
-
+{% extends "base.html" %}
+{% load widget_tweaks %}
 {% block content %}
 {% load humanize %}
 <div class="container-fluid mt-1">
   
   <div class="row remain">
-    <div class="col-lg-3 d-none d-lg-block shadow-lg p-2" style="width-max:100px;">
+    <div class="col-lg-2 d-none d-lg-block shadow-lg p-2" >
       {% include "users/sidebar.html" %}
     </div>
-    <div class="col-lg-9 border">
-      <div class="w-100" style="text-align:center;">
-        <h5>Messages</h5>
-      </div>
+    <div class="col-lg-10 bg-light">
       {% include "users/off_canvas.html" %}
       {% include "users/modal_msg.html" %}
-      <div class="row d-lg-none d-block"> 
 
-        
+      <div class="row d-lg-none d-block"> 
         <ul class="nav-sidebar">
-          <li class="btn-left"><a class="btn btn-lg shadow-lg" data-bs-toggle="offcanvas" href="#sideBarOffcanvas"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> </a></li>
-          <li class="btn-right"><a class="btn btn-lg  shadow-lg" data-bs-toggle="modal" href="#myModal"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a></li>
+          <li class="btn-left"><a class="btn btn-lg shadow border border-1 rounded" data-bs-toggle="offcanvas" href="#sideBarOffcanvas"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> </a></li>
+          <li class="btn-right"><a class="btn btn-lg  shadow border border-1 rounded" data-bs-toggle="modal" href="#myModal"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a></li>
         </ul>
       </div>
-      
-      <!--
-        {% for msg in msgsRecipient %}
-        <div id="{{msg.id}}" class="w3-container person p-3">
-          <br>
-          <img class="rounded" src="{{profile.profile_image.url}}" style="width:20%;">
-          <h5 class="mt-2">Subject: {{msg.subject}}</h5>
-          <h4 class="mb-2"><i class="fa fa-clock-o"></i> From Borge Refsnes, Sep 27, 2015.</h4>
-          <a class="btn ms-1 shadow-lg"  href="#">Reply<i class=" ms-2 fa fa-mail-reply"></i></a>
-          <a class="btn ms-4 shadow-lg" href="#">Forward<i class="ms-2 fa fa-arrow-right"></i></a>
-          <hr>
-          <p>{{msg.body}}</p>
-        </div> 
-        {% endfor %}  
-      -->
 
       <div class="w3-container person p-3">
-        <div id="msg-content" class="msg-content ">
-          <br>
-          <img id="pic-content" class="rounded ps-5 pe-5" src="" style="width:20%;">
-          <h5 class="mt-2">Subject: <span id="msg-subject"></span> </h5>
-          <h4 class="mb-2"><i class="fa fa-clock-o"></i> <span id="msg-sender-created"> From Borge Refsnes, Sep 27, 2015. </span></h4>
-          <a class="btn ms-1 shadow-lg"  href="#">Reply<i class=" ms-2 fa fa-mail-reply"></i></a>
-          <a class="btn ms-4 shadow-lg" href="#">Forward<i class="ms-2 fa fa-arrow-right"></i></a>
-          <hr>
-          <p id="msg-body"> </p>
+        <div id="msg-content" class="msg-content">
+          <div class="row w-100 shadow-sm border border-2 rounded mb-2 bg-white" style="text-align:center;">
+            <h6 id="msg-subject" class="mt-2 text-primary-emphasis"></h6>
+          </div>
+
+          <div class = "row shadow-sm border border-2 rounded mb-2 bg-white w-100">
+            <div class="col-6 d-flex justify-content-start">
+                <img id="pic-content" class="rounded mt-3" src="" style="width:10%; height:15%; ">
+                <div class="">
+                  <p><h6><span id="msg-sender-name"></span> <span id="msg-sender-email"></span></h6></p>
+                  <p><h6 class="mb-2"><i class="fa fa-clock-o"></i> <span id="msg-sender-created"></span> </h6></p>
+                </div>
+             
+            </div>
+            <div class="col-6 bg-white d-flex justify-content-end">
+              <div class="row mb-4">
+                <div class="col-6">
+                  <a class="btn btn-sm ms-1  btn-reply"  id="btn-reply" href="#">Reply<i class=" ms-2 fa fa-mail-reply"></i></a>
+                </div>
+                <div class="col-6">
+                  <a class="btn btn-sm ms-4 " href="#">Forward<i class="ms-2 fa fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div> 
+          <div class="row h-100 bg-white" >
+            <span id="msg-recipient-name"></span> <span id="msg-recipient-email" data-recipient-email=""></span></h6>
+            <hr>
+            <div><p id="msg-body"></p></div>
+            <div>
+              <a class="btn btn-sm ms-1 shadow border border-1 rounded  btn-reply"  id="btn-reply" href="#">Reply<i class=" ms-2 fa fa-mail-reply"></i></a>
+              <a class="btn btn-sm ms-4 shadow border border-1 rounded " href="#">Forward<i class="ms-2 fa fa-arrow-right"></i></a>
+              <h6 class="mb-2"><span id="msg-sender-created"></span></h6></div>
+            </div>
+          </div>           
+        </div>
+        <div id = "reply-form-modal" class="border border-2 rounded shadow-sm p-3 bg-white" data-id="" style="display:none;"> 
+          <form action="#" method="POST">
+            {% csrf_token %}
+            <div class="form-group mb-2">                    
+              <label for="reply-text" class="form-label mt-2">Reply message</label>
+              <textarea id="reply-text" class="form-control" rows="3" style="height: 162px;" placeholder="Type your reply here..."></textarea>                
+            </div> 
+            <div class="form-group">                    
+              <button id = "send-reply">Send <i class=" ms-2 fa fa-mail-reply"></i></button>                
+            </div> 
+          </form>
         </div>
       </div> 
-      
-
-          
     </div>
   </div>
 </div>

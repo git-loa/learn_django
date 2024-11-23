@@ -12,6 +12,5 @@ urlpatterns = [
     path('msgs/', views.userMsgs, name='msgs'),
     path('read-msg/', views.read_msg, name='read-msg'),
     path('msg-details/', views.getMsgDetails, name='msg-details'),
-    
-    
+    path('send-reply/', views.sendReply, name="send-reply")
 ]

@@ -1,6 +1,5 @@
 
 <div id="accordion">
-
   <div class="card border-0">
     <a class="collapsed btn btn-lg" data-bs-toggle="modal" href="#myModal">
       <div class="card-header card-header-text">
@@ -8,12 +7,11 @@
       </div>
     </a>
   </div>
-
-  <div class="card border-0">
-    
-    <a class="btn btn-lg" data-bs-toggle="collapse" href="#collapseOne">
+  
+  <div  class="card border-0">
+    <a  id="id_inbox" class="btn btn-lg" data-bs-toggle="collapse" href="#collapseOne">
       <div class="card-header card-header-text">
-        <i class="fa fa-inbox me-4"></i>Inbox (<span id="unread-count">{{ unreadCount }}</span>)<i class="fa fa-caret-down ms-4"></i>
+        <i class="fa fa-inbox me-4"></i>Inbox (<span id="unread-count">{{unreadCount}}</span>)<i class="fa fa-caret-down ms-4"></i>
       </div>
     </a>
     
@@ -41,8 +39,16 @@
     </a>
     
     <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
-      <div class="card-body">
-        Lorem ipsum..
+      <div class="card-body scroll justify-content-center">
+        {% for msg in msgsSender %}         
+        <div class="btn mini-msg btn-mini-msg" data-id="{{msg.id}}">
+          <img class="w3-round w3-margin-right" src="{{msg.sender.profile_image.url}}" style="width:15%;"><span class="w3-opacity w3-large">{{msg.sender.first_name}} {{msg.sender.last_name}}</span>
+          <h6>Subject: {{msg.subject}}</h6>
+          <p>{{msg.body|slice:'25'}}...</p>
+        </div>
+        <br/>
+        <hr>
+        {% endfor %}
       </div>
     </div>
   </div>
@@ -77,19 +83,3 @@
     </div>
   </div>
 </div> 
-
-{% comment %} 
-<div class="othersSideMenu">
-  <ul class="nav flex-column">
-    <li class="nav-item-left">
-      <a class="nav-link btn btn-lag" href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i> Sent</a>
-    </li>
-    <li class="nav-item-left">
-      <a class="nav-link btn btn-lg" href="#"><i class="fa fa-hourglass-end" aria-hidden="true"></i> Drafts</a>
-    </li>
-    <li class="nav-item-left">
-      <a class="nav-link btn btn-lg" href="#"><i class="fa fa-trash" aria-hidden="true"></i> Trash</a>
-    </li>
-  </ul>
-</div> 
-{% endcomment %}
